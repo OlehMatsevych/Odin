@@ -1,0 +1,77 @@
+
+<div class="container">
+    <app-sidepanel></app-sidepanel>
+    <div class="board">
+      <mat-grid-list cols="2">
+        <mat-grid-tile class="retro-grid">
+          <div class="good">
+            <button class="add-btn" (click)='onAddGoodData()' mat-flat-button color="accent">Add</button>
+            <p class="section-what">What was good ? 🥳</p>
+            <div class="example-boundary good-boundary">
+              <div  class="example-box good-card" cdkDragBoundary=".example-boundary" cdkDrag *ngFor="let divData of goodDataSource">
+                <div class="card-content"  contentEditable="true">Click to edit</div>
+                <div class="example-handle" cdkDragHandle>
+                  <svg width="18px" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile class="retro-grid">
+          <div class="bad">
+            <button class="add-btn" (click)='onAddBadData()' mat-flat-button color="accent">Add</button>
+            <p class="section-what">What was bad ? 😒</p>
+            <div class="example-boundary bad-boundary">
+              <div  class="example-box bad-card" cdkDragBoundary=".example-boundary" cdkDrag *ngFor="let divData of badDataSource">
+                <div class="card-content"  contentEditable="true">Click to edit</div>
+                <div class="example-handle" cdkDragHandle>
+                  <svg width="18px" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile class="retro-grid extra-tile">
+          <div class="start">
+            <button class="add-btn" (click)='onAddStartData()' mat-flat-button color="accent">Add</button>
+            <p class="section-what">Start 🏃‍♂️</p>
+            <div class="example-boundary  start-boundary">
+              <div  class="example-box start-card" cdkDragBoundary=".example-boundary" cdkDrag *ngFor="let divData of startDataSource">
+                <div class="card-content"  contentEditable="true">Click to edit</div>
+                <div class="example-handle" cdkDragHandle>
+                  <svg width="18px" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                  </svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile class="retro-grid extra-tile">
+          <div class="thanks">
+            <button class="add-btn" (click)='onAddThanksData()' mat-flat-button color="accent">Add</button>
+            <p class="section-what">Thanks 💖</p>
+            <div class="example-boundary thanks-boundary">
+              <div  class="example-box thanks-card" cdkDragBoundary=".example-boundary" cdkDrag *ngFor="let divData of thanksDataSource">
+                <div class="card-content" contentEditable="true">Click to edit</div>
+                <div class="example-handle" cdkDragHandle>
+                  <svg width="18px" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+</div>

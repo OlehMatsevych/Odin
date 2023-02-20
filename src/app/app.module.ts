@@ -14,6 +14,8 @@ import { DashboardComponent } from './Shell/components/dashboard/dashboard.compo
 import { BoardComponent } from './Project/components/board/board.component';
 import { SidepanelComponent } from './Shell/components/sidepanel/sidepanel.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { PokerBoardComponent } from './Poker/components/poker-board/poker-board.component';
+import { RetroBoardComponent } from './Retro/components/retro-board/retro-board.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     StartComponent,
     DashboardComponent,
     BoardComponent,
-    SidepanelComponent
+    SidepanelComponent,
+    PokerBoardComponent,
+    RetroBoardComponent
   ],
   imports: [
     BrowserModule,
