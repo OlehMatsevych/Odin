@@ -16,6 +16,7 @@ import { SidepanelComponent } from './Shell/components/sidepanel/sidepanel.compo
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PokerBoardComponent } from './Poker/components/poker-board/poker-board.component';
 import { RetroBoardComponent } from './Retro/components/retro-board/retro-board.component';
+import { PokerRoomComponent } from './Poker/components/poker-room/poker-room.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RetroBoardComponent } from './Retro/components/retro-board/retro-board.
     BoardComponent,
     SidepanelComponent,
     PokerBoardComponent,
-    RetroBoardComponent
+    RetroBoardComponent,
+    PokerRoomComponent
   ],
   imports: [
     BrowserModule,
