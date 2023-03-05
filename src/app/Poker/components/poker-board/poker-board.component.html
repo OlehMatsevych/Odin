@@ -1,1 +1,39 @@
-<p>poker-board works!</p>
+<div class="container">
+    <app-sidepanel></app-sidepanel>
+    <div class="rooms-list">
+        <div class="container-text">
+            <svg viewBox="0 0 960 300">
+              <symbol id="s-text">
+                <text text-anchor="middle" x="50%" y="80%">Rooms</text>
+              </symbol>
+          
+              <g class = "g-ants">
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+              </g>
+            </svg>
+          </div>
+
+        <mat-card class="example-card" *ngFor="let divData of DataSource">
+            <mat-card-header>
+              <mat-card-title-group>
+                <mat-card-title>Team Poker</mat-card-title>
+                <mat-card-subtitle>Feature: Customer Management</mat-card-subtitle>
+                <img mat-card-sm-image src="../../../../assets/imgs/add-new-poker-room.png">
+              </mat-card-title-group>
+            </mat-card-header>
+            <div class="example-button-row">
+                <button mat-raised-button (click)="openRoom()">Open</button>
+                <button mat-raised-button color="warn" (click)='onDeleteData(divData)'>Delete</button>
+            </div>
+        </mat-card>
+
+            <div class="example-button-row">
+                <button (click)='onAddData()' mat-raised-button>Add</button>
+            </div>
+    </div>
+
+</div>

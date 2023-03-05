@@ -10,7 +10,6 @@ export class RetroBoardComponent {
 
   setFocus(){
     this.textfield.nativeElement.focus();
-    console.log('ping')
   }
   goodDataSource: number[] = [];  
   badDataSource: number[] = [];  

@@ -1,0 +1,77 @@
+<div class="container">
+    <app-sidepanel></app-sidepanel>
+    <div class="room-page">
+        <mat-grid-list cols="4" rows="3" rowHeight="2:1">
+            <mat-grid-tile id="story-block" [colspan]="3" [rowspan]="1">
+                <mat-form-field appearance="fill">
+                    <mat-label>Story to Estimate</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="story-info">
+                    <mat-card class="example-card">
+                        <mat-card-header>
+                            <mat-card-title-group>
+                                <mat-card-title>#2239210323</mat-card-title>
+                                <mat-card-subtitle>Delete user, UI+Back-End</mat-card-subtitle>
+                            </mat-card-title-group>
+                        </mat-card-header>
+                        <div class="example-button-row">
+                            <mat-icon>open_in_new</mat-icon>
+                        </div>
+                    </mat-card>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile id="points-block" [colspan]="3" [rowspan]="2">
+                <div class="choose-card-text">
+                    Choose your card
+                    <span role="img" aria-label="point below">👇</span>
+                </div>
+                <div class="cards-container">
+                    <div class="card" *ngFor="let card of cards">
+                        <div (click)="addEstimation(card)">
+                            {{card}}
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile id="actions-block" [colspan]="3" [rowspan]="1">
+                <div class="example-button-actions-row">
+                    <button mat-stroked-button (click)="toggleFlip()">Reveal Cards</button>
+                    <button mat-stroked-button color="warn" (click)="startNewSession()">Start New Voting</button>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile id="scores-block" [rowspan]="3">
+                <div class="players-text">
+                    Players
+                    <span role="img" aria-label="point below">🕵️</span>
+                </div>
+                <mat-list class="user-estimation-container" role="list" *ngFor="let est of estimations">
+                    <div class="user-estimation-name">{{est.user}}:</div>
+                    <mat-list-item role="listitem" >
+                        <div class="tp-wrapper">
+                            <div class="tp-box" [@flipState]="flip">
+                                <div class="tp-box__side tp-box__front">
+                                    <img mat-card-sm-image width="40px"
+                                        src="../../../../assets/imgs/add-new-poker-room.png">
+                                </div>
+                                <div class="tp-box__side tp-box__back">
+                                    <img mat-card-sm-image width="40px"
+                                        src="../../../../assets/imgs/add-new-poker-room.png">
+                                    <div class="centered">
+                                        {{est.value}} 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>
