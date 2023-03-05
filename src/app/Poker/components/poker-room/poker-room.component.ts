@@ -54,14 +54,20 @@ export class PokerRoomComponent {
 
   addEstimation(card: any) {
     let index = this.estimations.findIndex(x => x.user == "Admin");
-    console.log('index: ', index)
     if (index > -1){
        this.estimations[index].value = card;
     } else {
       this.estimations.push({ user: "Admin", value: card });
     }
+    console.log(this.estimations)
   }
+
   toggleFlip() {
     this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
+  }
+
+  startNewSession(){
+    this.estimations = []
+    this.flip = 'inactive'
   }
 }

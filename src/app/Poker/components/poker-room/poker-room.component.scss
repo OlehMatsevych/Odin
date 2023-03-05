@@ -1,227 +1,275 @@
 .container {
-    max-width: 100%;
-    max-height: 100%;
-    display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
 
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    font-size: 15px;
-    font-weight: 500;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 .room-page {
-    align-items: center;
+  align-items: center;
 
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    margin-top: 80px;
-    border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-top: 80px;
+  border-radius: 5%;
 }
 
 .mat-grid-list {
-    width: 100%;
-    padding-bottom: unset !important;
+  width: 100%;
+  padding-bottom: unset !important;
 }
 
 mat-grid-tile {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 
 #scores-block {
-    margin-top: unset !important;
-    background-color: rgb(245, 245, 245);
+  margin-top: unset !important;
 }
 
 #actions-block {
-    background-color: rgb(245, 245, 245)
+  background-color: rgb(245, 245, 245)
 }
 
-#points-block {
-    background-color: rgb(245, 245, 245)
+#points-block>::ng-deep .mat-grid-tile-content {
+  flex-direction: column;
+  background-color: rgb(245, 245, 245)
+}
+
+#scores-block>::ng-deep .mat-grid-tile-content {
+  flex-direction: column;
+  background-color: rgb(245, 245, 245)
 }
 
 #story-block {
-    background-color: rgb(245, 245, 245)
+  background-color: rgb(245, 245, 245)
 }
 
 .story-content {
-    display: block;
+  display: block;
 }
 
 ::ng-deep .mat-grid-tile-content {
-    padding: 5px !important;
-    right: unset !important;
-    margin: 0;
-    width: 100%;
+  padding: 5px !important;
+  right: unset !important;
+  margin: 0;
+  width: 100%;
 }
+
 ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
 }
 
 
 .example-card {
-    margin-left: 15px;
-    max-width: 800px;
-    width: 600px;
-    margin-right: 15px;
-    display: flex;
-    flex-direction: row;
+  margin-left: 15px;
+  max-width: 800px;
+  width: 600px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: row;
 }
-.example-button-row{
-    margin-left: auto;
-    margin-right: 5px;
-    margin-top: 5px;
+
+.example-button-row {
+  margin-left: auto;
+  margin-right: 5px;
+  margin-top: 5px;
 }
 
 mat-grid-tile {
-    border-radius: 15px;
+  border-radius: 15px;
 }
 
 .mat-mdc-card-header {
-    padding: 16px;
+  padding: 16px;
 }
 
 .mat-mdc-card-title-group {
-    gap: 10px;
+  gap: 10px;
 }
 
 //card scorres
 $card-height: 10vh;
 $card-width: calc($card-height / 1.5);
 
-.cards-container{
-    display: flex;
-    gap: 10px;
+.cards-container {
+  display: flex;
+  gap: 10px;
 }
+
 .card {
-    background: #191c29;
-    width: $card-width;
-    height: $card-height;
-    padding: 3px;
-    position: relative;
-    border-radius: 6px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    font-size: 1.5em;
-    color: rgb(109, 109, 109);
-    cursor: pointer;
-    font-family: cursive;
-  }
-  
-  .card:hover {
-    color: rgb(225, 225, 225);
-    transition: color 1s;
-  }
-  .card:hover:before, .card:hover:after {
-    animation: none;
-    opacity: 0;
-  }
-  
-  
-  .card::before {
-    content: "";
-    width: 104%;
-    height: 102%;
-    border-radius: 8px;
-    background-image: linear-gradient(
-    #5ddcff, #3c67e3 43%, #4e00c2);
-      position: absolute;
-      z-index: -1;
-      top: -1%;
-      left: -2%;
-      animation: spin 2.5s linear infinite;
-  }
-  
-  .card::after {
-    position: absolute;
-    content: "";
-    top: calc($card-height / 6);
-    left: 0;
-    right: 0;
-    z-index: -1;
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
-    transform: scale(0.8);
-    filter: blur(calc($card-height / 6));
-    background-image: linear-gradient(
-         #5ddcff, #3c67e3 43%, #4e00c2);
-      opacity: 1;
-    transition: opacity .5s;
-    animation: spin 2.5s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      --rotate: 0deg;
-    }
-    100% {
-      --rotate: 360deg;
-    }
-  }
-  
-  a {
-    color: #212534;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-weight: bold;
-    margin-top: 2rem;
+  background: #191c29;
+  width: $card-width;
+  height: $card-height;
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(109, 109, 109);
+  cursor: pointer;
+  font-family: cursive;
+}
+
+.card:hover {
+  color: rgb(225, 225, 225);
+  transition: color 1s;
+}
+
+.card:hover:before,
+.card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(#5ddcff, #3c67e3 43%, #4e00c2);
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc($card-height / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc($card-height / 6));
+  background-image: linear-gradient(#5ddcff, #3c67e3 43%, #4e00c2);
+  opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
   }
 
-  
-  .tp-wrapper {
-    -webkit-perspective: 800px;
-            perspective: 800px;
+  100% {
+    --rotate: 360deg;
   }
-  
-  .tp-box {
-    position: relative;
-    width: 40px;
-    height: 60px;
-    margin: 1px auto;
-    -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-    -webkit-transform         : transform 1s;
-        -ms-transform         : transform 1s;
-            transform         : transform 1s;
-  }
-  .tp-box__side {
-     width: 100%;
-    height: 100%;
-    position: absolute;
+}
 
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+a {
+  color: #212534;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+}
 
-    color: #fff;
-    text-align: center;
-    line-height: 40px;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-  }
-  .tp-box__front {
-    -webkit-transform : rotateY(0deg);
-    -ms-transform     : rotateY(0deg);
-    transform         : rotateY(0deg);
-  }
-  .tp-box__back {
-    background: #23262d;
-    -webkit-transform : rotateY(-180deg);
-    -ms-transform     : rotateY(-180deg);
-    transform         : rotateY(-180deg);
-  }
-  .mat-mdc-card-sm-image{
-    width: 40px;
-    height: 40px;
-  }
+
+.tp-wrapper {
+  -webkit-perspective: 800px;
+  perspective: 800px;
+}
+
+.tp-box {
+  position: relative;
+  width: 40px;
+  height: 60px;
+  margin: 1px auto;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: transform 1s;
+  -ms-transform: transform 1s;
+  transform: transform 1s;
+}
+
+.tp-box__side {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.tp-box__front {
+  -webkit-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+.tp-box__back {
+  position: relative;
+  text-align: center;
+  color: white;
+  -webkit-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
+.mat-mdc-card-sm-image {
+  width: 40px;
+  height: 40px;
+}
+
+.example-button-actions-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.choose-card-text {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.players-text {
+  text-align: center;
+  margin-top: 10px;
+}
+.user-estimation-name{
+  align-self: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+::ng-deep .mat-mdc-list-base {
+  display: flex !important;
+  flex-direction: row;
+}
+.tp-box{
+  height: 40px !important;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
