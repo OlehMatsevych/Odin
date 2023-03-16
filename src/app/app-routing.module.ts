@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AnalyticsBoardComponent } from './Analytics/components/analytics-board/analytics-board.component';
 import { PokerBoardComponent } from './Poker/components/poker-board/poker-board.component';
 import { PokerRoomComponent } from './Poker/components/poker-room/poker-room.component';
 import { BoardComponent } from './Project/components/board/board.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'poker', component: PokerBoardComponent },
   { path: 'poker/room', component: PokerRoomComponent },
   { path: 'retro', component: RetroBoardComponent },
+  { path: 'reports', component: AnalyticsBoardComponent },
 ];
 
 @NgModule({

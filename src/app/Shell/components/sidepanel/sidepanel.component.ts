@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidepanel.component.scss']
 })
 export class SidepanelComponent {
+  id: number = 0;
 
+  addClass(id: number) {
+    this.id = id;
+    console.log(this.id)
+  }
 }
