@@ -1,0 +1,17 @@
+<div mat-dialog-content>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Node Name" [(ngModel)]="data.Name"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput rows="4" placeholder="Node Description" [(ngModel)]="data.Description"/>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button color="warn" (click)="onNoClick()" style="position: relative;right: 15px;">
+      No Thanks
+    </button>
+    <button mat-stroked-button color="primary" [disabled]="!(data.Name || data.Description)" (click)="onEditClick()"  style="position: relative;left: 20px;">
+      {{data.Component}}
+    </button>
+  </div>
+  
