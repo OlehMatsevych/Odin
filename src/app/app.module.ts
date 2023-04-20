@@ -8,7 +8,7 @@ import { RegisterComponent } from './Shell/components/register/register.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StartComponent } from './Shell/components/start/start.component';
 import { DashboardComponent } from './Shell/components/dashboard/dashboard.component';
 import { BoardComponent } from './Project/components/board/board.component';
@@ -18,31 +18,42 @@ import { PokerBoardComponent } from './Poker/components/poker-board/poker-board.
 import { RetroBoardComponent } from './Retro/components/retro-board/retro-board.component';
 import { PokerRoomComponent } from './Poker/components/poker-room/poker-room.component';
 import { AnalyticsBoardComponent } from './Analytics/components/analytics-board/analytics-board.component';
+import { ProjectsBoardComponent } from './Project/components/projects-board/projects-board.component';
+import { RoadmapListComponent } from './Roadmap/components/roadmap-list/roadmap-list.component';
+import { PeopleListComponent } from './People/components/people-list/people-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InviteUsersModalComponent } from './People/components/invite-users-modal/invite-users-modal.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LogInComponent,
-    RegisterComponent,
-    StartComponent,
-    DashboardComponent,
-    BoardComponent,
-    SidepanelComponent,
-    PokerBoardComponent,
-    RetroBoardComponent,
-    PokerRoomComponent,
-    AnalyticsBoardComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AngularMaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    DragDropModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LogInComponent,
+        RegisterComponent,
+        StartComponent,
+        DashboardComponent,
+        BoardComponent,
+        SidepanelComponent,
+        PokerBoardComponent,
+        RetroBoardComponent,
+        PokerRoomComponent,
+        AnalyticsBoardComponent,
+        ProjectsBoardComponent,
+        RoadmapListComponent,
+        PeopleListComponent,
+        InviteUsersModalComponent,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        DragDropModule,
+        FormsModule,
+        HttpClientModule
+    ]
 })
 export class AppModule { }
