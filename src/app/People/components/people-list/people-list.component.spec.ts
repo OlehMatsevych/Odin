@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteNodeComponent } from './delete-node.component';
+import { PeopleListComponent } from './people-list.component';
 
-describe('DeleteNodeComponent', () => {
-  let component: DeleteNodeComponent;
-  let fixture: ComponentFixture<DeleteNodeComponent>;
+describe('PeopleListComponent', () => {
+  let component: PeopleListComponent;
+  let fixture: ComponentFixture<PeopleListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteNodeComponent ]
+      declarations: [ PeopleListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeleteNodeComponent);
+    fixture = TestBed.createComponent(PeopleListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

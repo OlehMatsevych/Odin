@@ -20,15 +20,11 @@ import { PokerRoomComponent } from './Poker/components/poker-room/poker-room.com
 import { AnalyticsBoardComponent } from './Analytics/components/analytics-board/analytics-board.component';
 import { ProjectsBoardComponent } from './Project/components/projects-board/projects-board.component';
 import { RoadmapListComponent } from './Roadmap/components/roadmap-list/roadmap-list.component';
-import { AddNodeComponent, NewNodeDialog } from './Roadmap/components/add-node/add-node.component';
-import { DeleteNodeComponent } from './Roadmap/components/delete-node/delete-node.component';
-import { EditNodeComponent, EditNodeDialog } from './Roadmap/components/edit-node/edit-node.component';
+import { PeopleListComponent } from './People/components/people-list/people-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InviteUsersModalComponent } from './People/components/invite-users-modal/invite-users-modal.component';
 
 @NgModule({
-    entryComponents: [
-        NewNodeDialog,
-        EditNodeDialog
-    ],
     declarations: [
         AppComponent,
         LogInComponent,
@@ -43,11 +39,8 @@ import { EditNodeComponent, EditNodeDialog } from './Roadmap/components/edit-nod
         AnalyticsBoardComponent,
         ProjectsBoardComponent,
         RoadmapListComponent,
-        AddNodeComponent,
-        DeleteNodeComponent,
-        EditNodeComponent,
-        NewNodeDialog,
-        EditNodeDialog
+        PeopleListComponent,
+        InviteUsersModalComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -59,7 +52,8 @@ import { EditNodeComponent, EditNodeDialog } from './Roadmap/components/edit-nod
         FlexLayoutModule,
         ReactiveFormsModule,
         DragDropModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ]
 })
 export class AppModule { }

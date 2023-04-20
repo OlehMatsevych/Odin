@@ -11,6 +11,7 @@ import { DashboardComponent } from './Shell/components/dashboard/dashboard.compo
 import { LogInComponent } from './Shell/components/log-in/log-in.component';
 import { RegisterComponent } from './Shell/components/register/register.component';
 import { StartComponent } from './Shell/components/start/start.component';
+import { PeopleListComponent } from './People/components/people-list/people-list.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'start' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   
   { path: 'roadmap', component: RoadmapListComponent },
   { path: 'projects', component: ProjectsBoardComponent },
+  { path: 'people', component: PeopleListComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'board', component: BoardComponent },
   { path: 'poker', component: PokerBoardComponent },
