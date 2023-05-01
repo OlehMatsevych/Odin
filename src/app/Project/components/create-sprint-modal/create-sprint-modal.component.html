@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Create a new Sprint</h2>
+<h4>Select items from backlog</h4>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-select [(ngModel)]="selectedItems" multiple>
+      <mat-option *ngFor="let item of backlog" [value]="item">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onCreateClick()">Create</button>
+</mat-dialog-actions>

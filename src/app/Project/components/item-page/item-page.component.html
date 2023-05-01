@@ -1,0 +1,58 @@
+<div class="container">
+    <app-sidepanel></app-sidepanel>
+    <div class="board">
+        <div class="work-item">
+            <mat-card>
+                <mat-card-header class="card-header">
+                    <div class="mat-card-title">{{ workItem.name }}</div>
+                    <div class="mat-card-subtitle">{{ workItem.sprint }}</div>
+                </mat-card-header>
+                <mat-card-content class="card-content">
+                    <div class="card-content-description">
+                        <strong class="card-description">Description:</strong>
+                        <div class="ngxEditor__wrapper" *ngIf="editor">
+                            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+                            <ngx-editor
+                              [editor]="editor"
+                              [ngModel]="workItem.description "
+                              [disabled]="false"
+                              [placeholder]="'Type here...'"
+                            ></ngx-editor>
+                          </div>
+                    </div>
+                    <div class="card-content-details">
+                        <strong>Priority:</strong> <span
+                            [ngClass]="{'priority-high': workItem.priority === 'High', 'priority-medium': workItem.priority === 'Medium', 'priority-low': workItem.priority === 'Low'}"
+                            class="priority-label">{{ workItem.priority }}</span>
+                        <hr>
+                        <br><strong>Asignee:</strong> <img class="avatar assignee-avatar"
+                            src="{{ workItem.assigneeAvatar }}" alt="Assignee Avatar">{{ workItem.assignee }}
+                        <br><strong>Reporter:</strong> <img class="avatar reporter-avatar"
+                            src="{{ workItem.reporterAvatar }}" alt="Reporter Avatar">{{ workItem.reporter }}
+                        <hr>
+                        <br><strong>Created At:</strong> {{ workItem.createdAt | date }}
+                        <br><strong>Updated At:</strong> {{ workItem.updatedAt | date }}
+                        <hr><br>
+                        <div *ngIf="workItem.parent"><strong>Parent:</strong>
+                            <div class="parent-work-item">
+                                <div class="label">{{ workItem.parent.type }} {{ workItem.parent.id }}:</div> {{
+                                workItem.parent.name }}
+                            </div>
+                        </div>
+                        <br>
+                        <div *ngIf="workItem.children.length > 0"><strong>Childs:</strong>
+                            <div class="child-work-items">
+                                <div class="label">{{ workItem.children.length }}:</div>
+                                <div *ngFor="let child of workItem.children" class="child-work-item">{{ child.id }}
+                                </div>
+                            </div>
+                        </div>
+                        <hr><br><strong>Estimation:</strong> {{ workItem.estimation }}
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+
+    </div>
+</div>
