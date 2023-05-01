@@ -1,75 +1,185 @@
-
 <div class="container">
-    <app-sidepanel></app-sidepanel>
-    <div class="board">
-        <div class="board-headers">
-          <mat-grid-list cols="5" rowHeight="60px">
-            <mat-grid-tile
-                *ngFor="let tile of tiles"
-                [colspan]="tile.cols"
-                [rowspan]="tile.rows"
-                [style.background]="tile.color">
-              {{tile.text}}
-            </mat-grid-tile>
-          </mat-grid-list>
-        </div>
+  <app-sidepanel></app-sidepanel>
+  <div class="board">
+    <mat-form-field>
+      <mat-select [(ngModel)]="selectedSprint">
+        <mat-option *ngFor="let sprint of sprints" [value]="sprint">{{sprint}}</mat-option>
+        <mat-option>
+          <button mat-raised-button (click)="createSprint()">Add</button>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <div class="board-cards">
-            <div class="example-container">
-                <div
-                  cdkDropList
-                  #todoList="cdkDropList"
-                  [cdkDropListData]="todo"
-                  [cdkDropListConnectedTo]="[inProgressList,qaList,readyList,doneList]"
-                  class="example-list"
-                  (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
-                </div>
-              </div>
-              <div class="example-container">
-                <div
-                  cdkDropList
-                  #inProgressList="cdkDropList"
-                  [cdkDropListData]="inProgress"
-                  [cdkDropListConnectedTo]="[todoList,qaList,readyList,doneList]"
-                  class="example-list"
-                  (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
-                </div>
-              </div>
-              <div class="example-container">
-                <div
-                  cdkDropList
-                  #qaList="cdkDropList"
-                  [cdkDropListData]="qa"
-                  [cdkDropListConnectedTo]="[todoList,inProgressList,readyList,doneList]"
-                  class="example-list"
-                  (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of qa" cdkDrag>{{item}}</div>
-                </div>
-              </div>
-              <div class="example-container">
-                <div
-                  cdkDropList
-                  #readyList="cdkDropList"
-                  [cdkDropListData]="ready"
-                  [cdkDropListConnectedTo]="[todoList,inProgressList,qaList,doneList]"
-                  class="example-list"
-                  (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of ready" cdkDrag>{{item}}</div>
-                </div>
-              </div>
-              <div class="example-container">
-                <div
-                  cdkDropList
-                  #doneList="cdkDropList"
-                  [cdkDropListData]="done"
-                  [cdkDropListConnectedTo]="[todoList,inProgressList,qaList,readyList]"
-                  class="example-list"
-                  (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-                </div>
-              </div>
-          </div>
+    <div class="board-headers">
+      <mat-grid-list cols="5" rowHeight="60px">
+        <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+          [style.background]="tile.color">
+          {{tile.text}}
+        </mat-grid-tile>
+      </mat-grid-list>
     </div>
+
+    <div class="board-cards">
+      <div class="example-container">
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+          [cdkDropListConnectedTo]="[inProgressList,qaList,readyList,doneList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let task of todo" cdkDrag>
+            <mat-card class="task-card">
+              <mat-card-header class="task-header">
+                <mat-card-title>
+                  #{{ task.id }}  {{ task.name }}
+                </mat-card-title>
+                <mat-card-subtitle *ngIf="task.type === 'bug' ">
+                  <mat-icon [ngStyle]="{'color':'red'}">bug_report</mat-icon>
+                  {{ task.type }}
+                </mat-card-subtitle>
+                <mat-card-subtitle *ngIf="task.type === 'task' ">
+                  <mat-icon [ngStyle]="{'color':'green'}">check_circle_outline</mat-icon>
+                  {{ task.type }}
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p class="priority-text">
+                  Priority: {{ task.priority }}
+                  <mat-icon *ngIf="task.priority==='High' ">star</mat-icon>
+                  <mat-icon *ngIf="task.priority==='Medium' ">star_half</mat-icon>
+                  <mat-icon *ngIf="task.priority==='Low' ">star_border</mat-icon>
+                </p>
+                <p class="priority-text">User: {{ task.user }}🙋🏼‍♂️</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <div class="example-container">
+        <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
+          [cdkDropListConnectedTo]="[todoList,qaList,readyList,doneList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let task of inProgress" cdkDrag>
+            <mat-card class="task-card">
+              <mat-card-header class="task-header">
+                <mat-card-title>
+                  #{{ task.id }}  {{ task.name }}
+                </mat-card-title>
+                <mat-card-subtitle *ngIf="task.type === 'bug' ">
+                  <mat-icon [ngStyle]="{'color':'red'}">bug_report</mat-icon>
+                  {{ task.type }}
+                </mat-card-subtitle>
+                <mat-card-subtitle *ngIf="task.type === 'task' ">
+                  <mat-icon [ngStyle]="{'color':'green'}">check_circle_outline</mat-icon>
+                  {{ task.type }}
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p class="priority-text">
+                  Priority: {{ task.priority }}
+                  <mat-icon *ngIf="task.priority==='High' ">star</mat-icon>
+                  <mat-icon *ngIf="task.priority==='Medium' ">star_half</mat-icon>
+                  <mat-icon *ngIf="task.priority==='Low' ">star_border</mat-icon>
+                </p>
+                <p class="priority-text">User: {{ task.user }}🙋🏼‍♂️</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <div class="example-container">
+        <div cdkDropList #qaList="cdkDropList" [cdkDropListData]="qa"
+          [cdkDropListConnectedTo]="[todoList,inProgressList,readyList,doneList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let task of qa" cdkDrag>
+            <mat-card class="task-card">
+              <mat-card-header class="task-header">
+                <mat-card-title>
+                  #{{ task.id }}  {{ task.name }}
+                </mat-card-title>
+                <mat-card-subtitle *ngIf="task.type === 'bug' ">
+                  <mat-icon [ngStyle]="{'color':'red'}">bug_report</mat-icon>
+                  {{ task.type }}
+                </mat-card-subtitle>
+                <mat-card-subtitle *ngIf="task.type === 'task' ">
+                  <mat-icon [ngStyle]="{'color':'green'}">check_circle_outline</mat-icon>
+                  {{ task.type }}
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p class="priority-text">
+                  Priority: {{ task.priority }}
+                  <mat-icon *ngIf="task.priority==='High' ">star</mat-icon>
+                  <mat-icon *ngIf="task.priority==='Medium' ">star_half</mat-icon>
+                  <mat-icon *ngIf="task.priority==='Low' ">star_border</mat-icon>
+                </p>
+                <p class="priority-text">User: {{ task.user }}🙋🏼‍♂️</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <div class="example-container">
+        <div cdkDropList #readyList="cdkDropList" [cdkDropListData]="ready"
+          [cdkDropListConnectedTo]="[todoList,inProgressList,qaList,doneList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let task of ready" cdkDrag>
+            <mat-card class="task-card">
+              <mat-card-header class="task-header">
+                <mat-card-title>
+                  #{{ task.id }}  {{ task.name }}
+                </mat-card-title>
+                <mat-card-subtitle *ngIf="task.type === 'bug' ">
+                  <mat-icon [ngStyle]="{'color':'red'}">bug_report</mat-icon>
+                  {{ task.type }}
+                </mat-card-subtitle>
+                <mat-card-subtitle *ngIf="task.type === 'task' ">
+                  <mat-icon [ngStyle]="{'color':'green'}">check_circle_outline</mat-icon>
+                  {{ task.type }}
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p class="priority-text">
+                  Priority: {{ task.priority }}
+                  <mat-icon *ngIf="task.priority==='High' ">star</mat-icon>
+                  <mat-icon *ngIf="task.priority==='Medium' ">star_half</mat-icon>
+                  <mat-icon *ngIf="task.priority==='Low' ">star_border</mat-icon>
+                </p>
+                <p class="priority-text">User: {{ task.user }}🙋🏼‍♂️</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <div class="example-container">
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList,inProgressList,qaList,readyList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let task of done" cdkDrag>
+            <mat-card class="task-card">
+              <mat-card-header class="task-header">
+                <mat-card-title>
+                  #{{ task.id }}  {{ task.name }}
+                </mat-card-title>
+                <mat-card-subtitle *ngIf="task.type === 'bug' ">
+                  <mat-icon [ngStyle]="{'color':'red'}">bug_report</mat-icon>
+                  {{ task.type }}
+                </mat-card-subtitle>
+                <mat-card-subtitle *ngIf="task.type === 'task' ">
+                  <mat-icon [ngStyle]="{'color':'green'}">check_circle_outline</mat-icon>
+                  {{ task.type }}
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p class="priority-text">
+                  Priority: {{ task.priority }}
+                  <mat-icon *ngIf="task.priority==='High' ">star</mat-icon>
+                  <mat-icon *ngIf="task.priority==='Medium' ">star_half</mat-icon>
+                  <mat-icon *ngIf="task.priority==='Low' ">star_border</mat-icon>
+                </p>
+                <p class="priority-text">User: {{ task.user }}🙋🏼‍♂️</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

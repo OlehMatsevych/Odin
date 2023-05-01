@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./poker-board.component.scss']
 })
 export class PokerBoardComponent {
+  
   constructor(
     private router: Router
   ) { }

@@ -23,6 +23,9 @@ import { RoadmapListComponent } from './Roadmap/components/roadmap-list/roadmap-
 import { PeopleListComponent } from './People/components/people-list/people-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InviteUsersModalComponent } from './People/components/invite-users-modal/invite-users-modal.component';
+import { CreateSprintModalComponent } from './Project/components/create-sprint-modal/create-sprint-modal.component';
+import { ItemPageComponent } from './Project/components/item-page/item-page.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
     declarations: [
@@ -41,6 +44,8 @@ import { InviteUsersModalComponent } from './People/components/invite-users-moda
         RoadmapListComponent,
         PeopleListComponent,
         InviteUsersModalComponent,
+        CreateSprintModalComponent,
+        ItemPageComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -53,7 +58,8 @@ import { InviteUsersModalComponent } from './People/components/invite-users-moda
         ReactiveFormsModule,
         DragDropModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        NgxEditorModule
     ]
 })
 export class AppModule { }
