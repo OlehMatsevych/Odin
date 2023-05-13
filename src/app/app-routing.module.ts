@@ -13,6 +13,7 @@ import { RegisterComponent } from './Shell/components/register/register.componen
 import { StartComponent } from './Shell/components/start/start.component';
 import { PeopleListComponent } from './People/components/people-list/people-list.component';
 import { ItemPageComponent } from './Project/components/item-page/item-page.component';
+import { AuthGuard } from './_common/helpers/auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'start' },
@@ -20,16 +21,16 @@ const routes: Routes = [
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
   
-  { path: 'roadmap', component: RoadmapListComponent },
-  { path: 'projects', component: ProjectsBoardComponent },
-  { path: 'item', component: ItemPageComponent },
-  { path: 'people', component: PeopleListComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'board', component: BoardComponent },
-  { path: 'poker', component: PokerBoardComponent },
-  { path: 'poker/room', component: PokerRoomComponent },
-  { path: 'retro', component: RetroBoardComponent },
-  { path: 'reports', component: AnalyticsBoardComponent },
+  { path: 'roadmap', component: RoadmapListComponent, canActivate: [AuthGuard] },
+  { path: 'projects', component: ProjectsBoardComponent, canActivate: [AuthGuard] },
+  { path: 'item', component: ItemPageComponent, canActivate: [AuthGuard] },
+  { path: 'people', component: PeopleListComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'board', component: BoardComponent, canActivate: [AuthGuard] },
+  { path: 'poker', component: PokerBoardComponent, canActivate: [AuthGuard] },
+  { path: 'poker/room', component: PokerRoomComponent, canActivate: [AuthGuard] },
+  { path: 'retro', component: RetroBoardComponent, canActivate: [AuthGuard] },
+  { path: 'reports', component: AnalyticsBoardComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

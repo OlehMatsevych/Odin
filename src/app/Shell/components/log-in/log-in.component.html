@@ -3,16 +3,20 @@
       <mat-card-header>
         <mat-card-title>Log in</mat-card-title>
       </mat-card-header>
-      <form class="example-form">
+      <form [formGroup]="form" (ngSubmit)="login()" class="example-form">
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Username">
+            <input formControlName="username" class="form-control" matInput placeholder="Username">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Password">
+            <input formControlName="password" class="form-control" matInput placeholder="Password">
           </mat-form-field>
         </mat-card-content>
-        <button mat-stroked-button color="accent" class="btn-block" (click)="login()">Log in</button>
+        <button mat-stroked-button color="accent" [disabled]="loading" class="btn btn-primary btn-block" >
+          <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+          Login
+      </button>
+      <a routerLink="../register" class="btn btn-link">Register</a>
       </form>
     </mat-card>
   </div>
