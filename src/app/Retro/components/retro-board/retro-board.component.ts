@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { SidepanelComponent } from '../../../Shell/components/sidepanel/sidepanel.component';
 
 @Component({
   selector: 'app-retro-board',

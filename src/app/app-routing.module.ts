@@ -23,7 +23,7 @@ const routes: Routes = [
   
   { path: 'roadmap', component: RoadmapListComponent, canActivate: [AuthGuard] },
   { path: 'projects', component: ProjectsBoardComponent, canActivate: [AuthGuard] },
-  { path: 'item', component: ItemPageComponent, canActivate: [AuthGuard] },
+  { path: 'item/:type/:id', component: ItemPageComponent , canActivate: [AuthGuard] },
   { path: 'people', component: PeopleListComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'board', component: BoardComponent, canActivate: [AuthGuard] },

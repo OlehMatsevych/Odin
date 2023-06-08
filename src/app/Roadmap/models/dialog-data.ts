@@ -27,21 +27,21 @@ export let TREE_DATA: RoadmapNode[] = [
       {      
         id: 'S1',
         level: 1,
-        name: 'Story 1.1',
+        name: 'Create user repo',
         parent: 'Epic 1',
         children: [
           {
             id: 'T1',
             level: 2,
             name: 'Task 1.1.1',
-            parent: 'Story 1.1',
+            parent: 'S1',
             children: []
           },
           {
             id: 'T2',
             level: 2,
             name: 'Task 1.1.2',
-            parent: 'Story 1.1',
+            parent: 'Story 1.1123123',
             children: []
           }
         ]

@@ -25,7 +25,13 @@
 //cards
 .board-cards{
     margin-top: 10px;
+    overflow-y: auto;
 }
+
+.mat-mdc-card-title {
+  font-size: 14px;
+}
+
 .example-container {
     width: 262px;
     max-width: 100%;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GameService } from '../../services/poker-game.service';
 
 @Component({
   selector: 'app-poker-board',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class PokerBoardComponent {
   
   constructor(
-    private router: Router
+    private router: Router,
+    private gameService: GameService
   ) { }
 
   DataSource: number[] = [1, 2];
@@ -25,6 +27,7 @@ export class PokerBoardComponent {
   }
 
   openRoom() {
+    this.gameService.startConnection();
     this.router.navigate(['poker/room']);
   }
 }

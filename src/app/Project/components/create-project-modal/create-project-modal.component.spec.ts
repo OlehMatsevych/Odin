@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateProjectModalComponent } from './create-project-modal.component';
+import { FormBuilder } from '@angular/forms';
+import { TestingModuleModule } from 'src/app/testing-module/testing-module.module';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { SidepanelComponent } from 'src/app/Shell/components/sidepanel/sidepanel.component';
 
 describe('CreateProjectModalComponent', () => {
   let component: CreateProjectModalComponent;
@@ -8,7 +14,8 @@ describe('CreateProjectModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateProjectModalComponent ]
+      imports: [TestingModuleModule, MatDialogModule, MatToolbarModule, MatCardModule],
+      declarations: [ CreateProjectModalComponent, SidepanelComponent ]
     })
     .compileComponents();
 

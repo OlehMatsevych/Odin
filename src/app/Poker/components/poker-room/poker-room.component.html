@@ -5,8 +5,8 @@
             <mat-grid-tile id="story-block" [colspan]="3" [rowspan]="1">
                 <mat-form-field appearance="fill">
                     <mat-label>Story to Estimate</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                    <mat-select [(ngModel)]="selectedItem" >
+                        <mat-option *ngFor="let food of foods" [value]="food" >
                             {{food.viewValue}}
                         </mat-option>
                     </mat-select>
@@ -16,12 +16,12 @@
                     <mat-card class="example-card">
                         <mat-card-header>
                             <mat-card-title-group>
-                                <mat-card-title>#2239210323</mat-card-title>
-                                <mat-card-subtitle>Delete user, UI+Back-End</mat-card-subtitle>
+                                <mat-card-title>#{{ selectedItem?.value?.slice(0, 6) }}</mat-card-title>
+                                <mat-card-subtitle>{{ selectedItem?.viewValue }}</mat-card-subtitle>
                             </mat-card-title-group>
                         </mat-card-header>
                         <div class="example-button-row">
-                            <mat-icon>open_in_new</mat-icon>
+                            <mat-icon (click)="redirectToItemPage()">open_in_new</mat-icon>
                         </div>
                     </mat-card>
                 </div>

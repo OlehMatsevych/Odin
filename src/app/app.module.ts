@@ -28,6 +28,7 @@ import { ItemPageComponent } from './Project/components/item-page/item-page.comp
 import { NgxEditorModule } from 'ngx-editor';
 import { JwtInterceptor } from './_common/helpers/jwt.interceptor';
 import { CreateProjectModalComponent } from './Project/components/create-project-modal/create-project-modal.component';
+import { SuccessModalComponent } from './People/components/success-modal/success-modal.component';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import { CreateProjectModalComponent } from './Project/components/create-project
         CreateSprintModalComponent,
         ItemPageComponent,
         CreateProjectModalComponent,
+        SuccessModalComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -64,7 +66,7 @@ import { CreateProjectModalComponent } from './Project/components/create-project
         DragDropModule,
         FormsModule,
         HttpClientModule,
-        NgxEditorModule
+        NgxEditorModule,
     ]
 })
 export class AppModule { }

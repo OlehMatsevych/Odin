@@ -1,5 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-invite-users-modal',
@@ -9,10 +11,17 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class InviteUsersModalComponent {
   email: string = '';
 
-  constructor(public dialogRef: MatDialogRef<InviteUsersModalComponent>) {}
+  private baseUrl = 'https://localhost:7034/api/email';  // URL to web api
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  
+  constructor(
+    private http: HttpClient,
+    public dialogRef: MatDialogRef<InviteUsersModalComponent>) {}
 
   inviteUser() {
-    // Send the invitation here using this.email
     this.dialogRef.close();
+    return this.http.post<User>(this.baseUrl, {email:this.email}, this.httpOptions).subscribe();
   }
 }

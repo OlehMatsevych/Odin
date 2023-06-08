@@ -21,8 +21,9 @@
           <button mat-icon-button [attr.aria-label]="'toggle ' + node.name" matTreeNodeToggle>
             <mat-icon>{{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}</mat-icon>
           </button>
-          <a href="/">#{{node.id}}  </a>
-          {{node.name}}
+          <a *ngIf="node.level === 0" href="/item/epic/{{node.id}}">#{{node.id.slice(0, 5) }}</a>
+          <a *ngIf="node.level === 1" href="/item/story/{{node.id}}">#{{node.id.slice(0, 5) }}</a>
+            {{node.name}}
           <div class="button-row" *ngIf="node.level === 0">
             <button mat-icon-button (click)="editNode(node.id)">Edit</button>
             <button mat-icon-button (click)="deleteNode(node.id)">Delete</button>
@@ -40,7 +41,7 @@
             <mat-icon class="item-icon" [ngClass]="'level-' + node.level">verified_user</mat-icon>
           </div>
           <button mat-icon-button disabled></button>
-          <a href="/">#{{node.id}}  </a>
+          <a href="/item/task/{{node.id}}">#{{ node.id.slice(0, 5) }}  </a>
           {{node.name}}
           <div class="button-row">
             <button mat-icon-button (click)="editNode(node.id)">Edit</button>

@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StartComponent } from './start.component';
+import { TestingModuleModule } from 'src/app/testing-module/testing-module.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 describe('StartComponent', () => {
   let component: StartComponent;
@@ -8,6 +12,7 @@ describe('StartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [TestingModuleModule, MatDialogModule, MatToolbarModule, MatCardModule],
       declarations: [ StartComponent ]
     })
     .compileComponents();
