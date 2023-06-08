@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { HighLevelTask } from '../../models/task-high-level';
 import { CreateSprintModalComponent } from '../create-sprint-modal/create-sprint-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SprintService } from '../../services/sprints.service';
+import { Sprint } from '../../models/sprint';
+import { BacklogService } from 'src/app/Roadmap/services/backlog.service';
 
 export interface Tile {
   color: string;
@@ -16,8 +19,8 @@ export interface Tile {
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent {
-  sprints = ['Sprint 1', 'Sprint 2', 'Sprint 3'];
+export class BoardComponent implements OnInit {
+  sprints: string[] = [];
   selectedSprint = 'option2';
 
   tiles: Tile[] = [
@@ -28,37 +31,49 @@ export class BoardComponent {
     {text: 'Done', cols: 1, rows: 1, color: '#212121'},
   ];
   //todo: HighLevelTask[] = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-  todo: HighLevelTask[] = [
-    {
-      id: 'T1',
-      name: 'Get to work',
-      priority: 'High',
-      user: 'Oleh',
-      type: 'task'
-    },
-    {
-      id: 'T2',
-      name: 'Pick up groceries',
-      priority: 'Medium',
-      user: '',
-      type: 'bug'
-    }
-  ];
+  todo: HighLevelTask[] = [];
   
   inProgress: HighLevelTask[] = [];
   qa: HighLevelTask[] = [];
   ready: HighLevelTask[] = [];
-  done:HighLevelTask[] = [
-    {
-      id: 'T3',
-      name: 'Take a shower',
-      priority: 'Medium',
-      user: 'Pavlo',
-      type: 'task'
-    }
-  ];
+  done:HighLevelTask[] = [];
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, 
+    private sprintService: SprintService,
+    private backlogService: BacklogService) { }
+
+  ngOnInit(): void {
+    this.sprintService.getAll()
+    .subscribe((sprints: Sprint[]) => {
+      this.sprints = sprints.map(x => x.name);
+      this.selectedSprint = this.sprints.sort().reverse()[0]
+    });
+
+    this.backlogService.getAllWorkItems().subscribe((items: HighLevelTask[]) => {
+      items.forEach((item: HighLevelTask) => {
+        switch (item.status) {
+          case 'todo':
+            this.todo.push(item);
+            break;
+          case 'inProgress':
+            this.inProgress.push(item);
+            break;
+          case 'qa':
+            this.qa.push(item);
+            break;
+          case 'ready':
+            this.ready.push(item);
+            break;
+          case 'done':
+            this.done.push(item);
+            break;
+          default:
+            // Handle any other status values if needed
+            break;
+        }
+      });
+    });
+  }
   
   drop(event: CdkDragDrop<HighLevelTask[]>) {
     if (event.previousContainer === event.container) {

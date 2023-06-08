@@ -21,11 +21,14 @@ import { AnalyticsBoardComponent } from './Analytics/components/analytics-board/
 import { ProjectsBoardComponent } from './Project/components/projects-board/projects-board.component';
 import { RoadmapListComponent } from './Roadmap/components/roadmap-list/roadmap-list.component';
 import { PeopleListComponent } from './People/components/people-list/people-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { InviteUsersModalComponent } from './People/components/invite-users-modal/invite-users-modal.component';
 import { CreateSprintModalComponent } from './Project/components/create-sprint-modal/create-sprint-modal.component';
 import { ItemPageComponent } from './Project/components/item-page/item-page.component';
 import { NgxEditorModule } from 'ngx-editor';
+import { JwtInterceptor } from './_common/helpers/jwt.interceptor';
+import { CreateProjectModalComponent } from './Project/components/create-project-modal/create-project-modal.component';
+import { SuccessModalComponent } from './People/components/success-modal/success-modal.component';
 
 @NgModule({
     declarations: [
@@ -46,8 +49,12 @@ import { NgxEditorModule } from 'ngx-editor';
         InviteUsersModalComponent,
         CreateSprintModalComponent,
         ItemPageComponent,
+        CreateProjectModalComponent,
+        SuccessModalComponent,
     ],
-    providers: [],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
@@ -59,7 +66,7 @@ import { NgxEditorModule } from 'ngx-editor';
         DragDropModule,
         FormsModule,
         HttpClientModule,
-        NgxEditorModule
+        NgxEditorModule,
     ]
 })
 export class AppModule { }

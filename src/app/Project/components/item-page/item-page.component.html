@@ -3,9 +3,11 @@
     <div class="board">
         <div class="work-item">
             <mat-card>
+              <mat-card-actions>
+                <button mat-button color="black" (click)="saveWorkItem()">Save</button>
+              </mat-card-actions>
                 <mat-card-header class="card-header">
-                    <div class="mat-card-title">{{ workItem.name }}</div>
-                    <div class="mat-card-subtitle">{{ workItem.sprint }}</div>
+                    <div class="mat-card-title">{{ workItem?.name }}</div>
                 </mat-card-header>
                 <mat-card-content class="card-content">
                     <div class="card-content-description">
@@ -14,45 +16,75 @@
                             <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
                             <ngx-editor
                               [editor]="editor"
-                              [ngModel]="workItem.description "
+                              [ngModel]="workItem?.description "
                               [disabled]="false"
                               [placeholder]="'Type here...'"
                             ></ngx-editor>
                           </div>
                     </div>
                     <div class="card-content-details">
-                        <strong>Priority:</strong> <span
-                            [ngClass]="{'priority-high': workItem.priority === 'High', 'priority-medium': workItem.priority === 'Medium', 'priority-low': workItem.priority === 'Low'}"
-                            class="priority-label">{{ workItem.priority }}</span>
+                        <strong>Priority:</strong>
+                        <span class="priority-label"
+                          [ngClass]="{
+                            'priority-high': priorityName === 'High',
+                            'priority-medium': priorityName === 'Medium',
+                            'priority-low': priorityName === 'Low'
+                          }">
+                          {{ priorityName }}
+                        </span>
                         <hr>
-                        <br><strong>Asignee:</strong> <img class="avatar assignee-avatar"
-                            src="{{ workItem.assigneeAvatar }}" alt="Assignee Avatar">{{ workItem.assignee }}
-                        <br><strong>Reporter:</strong> <img class="avatar reporter-avatar"
-                            src="{{ workItem.reporterAvatar }}" alt="Reporter Avatar">{{ workItem.reporter }}
+                        <br><strong>Asignee:</strong> {{ workItem?.assignee }}
                         <hr>
-                        <br><strong>Created At:</strong> {{ workItem.createdAt | date }}
-                        <br><strong>Updated At:</strong> {{ workItem.updatedAt | date }}
+                        <br><strong>Created At:</strong> {{ workItem?.createdOn | date }}
+                        <br><strong>Updated At:</strong> {{ workItem?.updatedOn | date }}
                         <hr><br>
-                        <div *ngIf="workItem.parent"><strong>Parent:</strong>
-                            <div class="parent-work-item">
-                                <div class="label">{{ workItem.parent.type }} {{ workItem.parent.id }}:</div> {{
-                                workItem.parent.name }}
+                        <div *ngIf="workItem?.epicId || workItem?.storyId"><strong>Parent:</strong>
+                            <div *ngIf="workItem?.epicId" class="parent-work-item">
+                                <div class="label">{{ workItem?.epicId?.slice(0, 5) }}:</div> {{
+                                workItem?.epicName}}
+                            </div>
+                            <div *ngIf="workItem?.storyId" class="parent-work-item">
+                                <div class="label">{{ workItem?.storyId?.slice(0, 5) }}:</div> {{
+                                workItem?.storyName  }}
                             </div>
                         </div>
                         <br>
-                        <div *ngIf="workItem.children.length > 0"><strong>Childs:</strong>
+                        <div *ngIf="workItem?.tasksIds"><strong>Childs:</strong>
                             <div class="child-work-items">
-                                <div class="label">{{ workItem.children.length }}:</div>
-                                <div *ngFor="let child of workItem.children" class="child-work-item">{{ child.id }}
+                                <div class="label">{{ workItem?.tasksIds!.length }}:</div>
+                                <div *ngFor="let child of workItem?.tasksIds" class="child-work-item">{{ child.slice(0, 5) }}
                                 </div>
                             </div>
                         </div>
-                        <hr><br><strong>Estimation:</strong> {{ workItem.estimation }}
+                        <hr><br><strong>Estimation:</strong> {{ workItem?.estimation }}
                     </div>
                 </mat-card-content>
             </mat-card>
+            <div class="comments-section">
+              <h3>Comments</h3>
+              <mat-list>
+                <mat-list-item *ngFor="let comment of workItem?.comments">
+                  <div mat-line>
+                    <strong>{{ comment.user }}</strong>
+                    <br>
+                    {{ comment.text }}
+                  </div>
+                  <div mat-line>
+                    <small>{{ comment.createdOn | date }}</small>
+                  </div>
+                </mat-list-item>
+              </mat-list>
+            </div>
+            <div class="add-comment-section">
+              <h3>Add Comment</h3>
+              <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+                <mat-form-field>
+                  <textarea matInput placeholder="Text" formControlName="text" required></textarea>
+                </mat-form-field>
+                <br>
+                <button mat-raised-button type="submit" color="black" [disabled]="commentForm.invalid">Send</button>
+              </form>
+            </div>
         </div>
-
-
     </div>
 </div>

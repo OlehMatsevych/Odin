@@ -1,7 +1,8 @@
 export interface HighLevelTask {
     id: string;
     name: string;
-    priority: string;
+    priority: number;
     user: string;
-    type: 'task' | 'bug'
+    type: 'task' | 'bug';
+    status?: string;
   }

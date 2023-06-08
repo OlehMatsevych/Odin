@@ -1,24 +1,32 @@
 export interface WorkItem {
     id: number;
     name: string;
-    sprint: string;
     description: string;
-    priority: 'High' | 'Medium' | 'Low';
+    priority: Priority;
     assignee: string;
-    assigneeAvatar: string;
     reporter: string;
-    reporterAvatar: string;
-    createdAt: string;
-    updatedAt: string;
-    parent?: {
-      id: number;
-      type: string;
-      name: string;
-    };
-    children: {
-      id: number;
-      name: string;
-    }[];
-    estimation: number;
+    createdOn: string;
+    updatedOn: string;
+
+    storyId: string;
+    storyName: string;
+
+    epicId: string;
+    epicName: string;
+
+    tasksIds: string[];
+    estimation: string;
+    comments: CommentData[]
+  }
+
+  export enum Priority{
+    High = 2,
+    Medium = 1,
+    Low = 0
+  }
+ export interface CommentData {
+    user: string;
+    text: string;
+    createdOn: string;
   }
   

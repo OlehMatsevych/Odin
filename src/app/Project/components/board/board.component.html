@@ -28,7 +28,7 @@
             <mat-card class="task-card">
               <mat-card-header class="task-header">
                 <mat-card-title>
-                  #{{ task.id }}  {{ task.name }}
+                  #{{ task.id.slice(0, 3)  }}  {{ task.name }}
                 </mat-card-title>
                 <mat-card-subtitle *ngIf="task.type === 'bug' ">
                   <mat-icon [ngStyle]="{'color':'red'}">bug_report</mat-icon>
@@ -42,9 +42,9 @@
               <mat-card-content>
                 <p class="priority-text">
                   Priority: {{ task.priority }}
-                  <mat-icon *ngIf="task.priority==='High' ">star</mat-icon>
-                  <mat-icon *ngIf="task.priority==='Medium' ">star_half</mat-icon>
-                  <mat-icon *ngIf="task.priority==='Low' ">star_border</mat-icon>
+                  <mat-icon *ngIf="task.priority===2 ">star</mat-icon>
+                  <mat-icon *ngIf="task.priority===1 ">star_half</mat-icon>
+                  <mat-icon *ngIf="task.priority===0 ">star_border</mat-icon>
                 </p>
                 <p class="priority-text">User: {{ task.user }}🙋🏼‍♂️</p>
               </mat-card-content>
@@ -60,7 +60,7 @@
             <mat-card class="task-card">
               <mat-card-header class="task-header">
                 <mat-card-title>
-                  #{{ task.id }}  {{ task.name }}
+                  #{{ task.id.slice(0, 3) }}  {{ task.name }}
                 </mat-card-title>
                 <mat-card-subtitle *ngIf="task.type === 'bug' ">
                   <mat-icon [ngStyle]="{'color':'red'}">bug_report</mat-icon>
@@ -74,9 +74,9 @@
               <mat-card-content>
                 <p class="priority-text">
                   Priority: {{ task.priority }}
-                  <mat-icon *ngIf="task.priority==='High' ">star</mat-icon>
-                  <mat-icon *ngIf="task.priority==='Medium' ">star_half</mat-icon>
-                  <mat-icon *ngIf="task.priority==='Low' ">star_border</mat-icon>
+                  <mat-icon *ngIf="task.priority===2 ">star</mat-icon>
+                  <mat-icon *ngIf="task.priority===1 ">star_half</mat-icon>
+                  <mat-icon *ngIf="task.priority===0 ">star_border</mat-icon>
                 </p>
                 <p class="priority-text">User: {{ task.user }}🙋🏼‍♂️</p>
               </mat-card-content>
@@ -92,7 +92,7 @@
             <mat-card class="task-card">
               <mat-card-header class="task-header">
                 <mat-card-title>
-                  #{{ task.id }}  {{ task.name }}
+                  #{{ task.id.slice(0, 3) }}  {{ task.name }}
                 </mat-card-title>
                 <mat-card-subtitle *ngIf="task.type === 'bug' ">
                   <mat-icon [ngStyle]="{'color':'red'}">bug_report</mat-icon>
@@ -106,9 +106,9 @@
               <mat-card-content>
                 <p class="priority-text">
                   Priority: {{ task.priority }}
-                  <mat-icon *ngIf="task.priority==='High' ">star</mat-icon>
-                  <mat-icon *ngIf="task.priority==='Medium' ">star_half</mat-icon>
-                  <mat-icon *ngIf="task.priority==='Low' ">star_border</mat-icon>
+                  <mat-icon *ngIf="task.priority===2 ">star</mat-icon>
+                  <mat-icon *ngIf="task.priority===1 ">star_half</mat-icon>
+                  <mat-icon *ngIf="task.priority===0 ">star_border</mat-icon>
                 </p>
                 <p class="priority-text">User: {{ task.user }}🙋🏼‍♂️</p>
               </mat-card-content>
@@ -124,7 +124,7 @@
             <mat-card class="task-card">
               <mat-card-header class="task-header">
                 <mat-card-title>
-                  #{{ task.id }}  {{ task.name }}
+                  #{{ task.id.slice(0, 3) }}  {{ task.name }}
                 </mat-card-title>
                 <mat-card-subtitle *ngIf="task.type === 'bug' ">
                   <mat-icon [ngStyle]="{'color':'red'}">bug_report</mat-icon>
@@ -138,9 +138,9 @@
               <mat-card-content>
                 <p class="priority-text">
                   Priority: {{ task.priority }}
-                  <mat-icon *ngIf="task.priority==='High' ">star</mat-icon>
-                  <mat-icon *ngIf="task.priority==='Medium' ">star_half</mat-icon>
-                  <mat-icon *ngIf="task.priority==='Low' ">star_border</mat-icon>
+                  <mat-icon *ngIf="task.priority===2 ">star</mat-icon>
+                  <mat-icon *ngIf="task.priority===1 ">star_half</mat-icon>
+                  <mat-icon *ngIf="task.priority===0 ">star_border</mat-icon>
                 </p>
                 <p class="priority-text">User: {{ task.user }}🙋🏼‍♂️</p>
               </mat-card-content>
@@ -156,7 +156,7 @@
             <mat-card class="task-card">
               <mat-card-header class="task-header">
                 <mat-card-title>
-                  #{{ task.id }}  {{ task.name }}
+                  #{{ task.id.slice(0, 3) }}  {{ task.name }}
                 </mat-card-title>
                 <mat-card-subtitle *ngIf="task.type === 'bug' ">
                   <mat-icon [ngStyle]="{'color':'red'}">bug_report</mat-icon>
@@ -170,9 +170,9 @@
               <mat-card-content>
                 <p class="priority-text">
                   Priority: {{ task.priority }}
-                  <mat-icon *ngIf="task.priority==='High' ">star</mat-icon>
-                  <mat-icon *ngIf="task.priority==='Medium' ">star_half</mat-icon>
-                  <mat-icon *ngIf="task.priority==='Low' ">star_border</mat-icon>
+                  <mat-icon *ngIf="task.priority===2 ">star</mat-icon>
+                  <mat-icon *ngIf="task.priority===1 ">star_half</mat-icon>
+                  <mat-icon *ngIf="task.priority===0 ">star_border</mat-icon>
                 </p>
                 <p class="priority-text">User: {{ task.user }}🙋🏼‍♂️</p>
               </mat-card-content>
